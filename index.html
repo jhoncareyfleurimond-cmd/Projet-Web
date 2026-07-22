@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Institut de Technologie Appliquées de Cayes - Formation professionnelle en informatique avec normes internationales. Programmes, admissions, portail étudiant et dashboard admin." />
+  <meta name="keywords" content="université, informatique, Cayes, admissions, faculté, sciences informatiques, portail étudiant, formation, développement web, cybersécurité" />
+  <meta name="author" content="Institut de Technologie Appliquées de Cayes" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="ITAC - Institut de Technologie Appliquées de Cayes" />
+  <meta property="og:description" content="Formation professionnelle en informatique avec normes internationales" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>ITAC</title>
+    <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="login-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Connexion Sécurisée</h2>
+        <button class="modal-close" id="closeModal" aria-label="Fermer">&times;</button>
+      </div>
+
+      <div class="login-tabs">
+        <button class="tab-btn active" data-tab="student">Étudiant</button>
+        <button class="tab-btn" data-tab="admin">Administrateur</button>
+      </div>
+
+      <!-- STUDENT LOGIN -->
+      <div id="studentContent" class="tab-content active">
+        <form id="studentLoginModal" class="login-form">
+          <div class="field">
+            <label for="studentIdModal">Matricule</label>
+            <input id="studentIdModal" name="studentId" type="text" placeholder="Ex: ITA2026-001 ou ITAC2026-001" required />
+          </div>
+          <div class="field">
+            <label for="studentPasswordModal">Mot de passe</label>
+            <input id="studentPasswordModal" name="studentPassword" type="password" placeholder="Votre mot de passe" required />
+          </div>
+          <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+        <p class="login-note">Compte de démonstration: <strong>ITA2026-001</strong> (mot de passe: <strong>1234</strong>)</p>
+      </div>
+
+      <!-- ADMIN LOGIN -->
+      <div id="adminContent" class="tab-content">
+        <form id="adminLoginModal" class="login-form">
+          <div class="field">
+            <label for="adminEmail">Email</label>
+            <input id="adminEmail" name="adminEmail" type="email" placeholder="admin@ita-cayes.edu.ht" required />
+          </div>
+          <div class="field">
+            <label for="adminPassword">Mot de passe</label>
+            <input id="adminPassword" name="adminPassword" type="password" placeholder="Votre mot de passe" required />
+          </div>
+          <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+        <p class="login-note">Compte de démonstration: <strong>admin@ita-cayes.edu.ht</strong> (mot de passe: <strong>admin1234</strong>)</p>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <img src="image/logo.png" alt="Logo ITAC Cayes" class="logo-img" />
+        <div class="brand-text">
+          <h1>ITAC</h1>
+          <p>Institut de Technologie Appliquées de Cayes</p>
+        </div>
+      </div>
+
+      <div class="nav-wrap">
+        <nav aria-label="Navigation principale" class="main-nav">
+          <div class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#apropos">À propos</a>
+            <a href="#admissions">Admissions</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+
+        <div class="nav-actions">
+          <form class="search-bar" role="search" aria-label="Recherche sur le site">
+            <input id="searchInput" type="search" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+            <button type="submit" aria-label="Lancer la recherche">🔍</button>
+          </form>
+          <button class="icon-btn" id="themeToggle" type="button" aria-label="Basculer le mode sombre">🌓</button>
+          <div id="userHeaderBadge" class="user-header-badge" style="display: none;"></div>
+          <button class="btn-login" id="openLoginBtn" type="button">Connexion</button>
+          <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Ouvrir le menu">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mobile-panel" id="mobilePanel">
+      <div class="nav-links nav-links-mobile">
+        <a href="#home">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn-login mobile" id="openLoginBtnMobile" type="button">Connexion</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <!-- Background hero-->
+      <div class="hero-bg" style="background-image: url('image/été-sunny-forest-trees-green-grass-60803357.jpg');"></div>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Faculté des Sciences Informatiques</span>
+          <h2><marquee behavior="" direction="left">Former des experts du numérique avec une vision internationale.</marquee></h2>
+          <p>L'Institut de Technologie Appliquées de Cayes propose une formation moderne, pratique et rigoureuse, pensée pour la réussite académique et l'employabilité.</p>
+          <div class="hero-badges">
+            <span class="badge">💻 Technologie & innovation</span>
+            <span class="badge">🌍 Normes internationales</span>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#admissions">Inscrivez-vous maintenant</a>
+            <a class="btn secondary" href="#login">Accéder au portail</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Points forts</h3>
+          <ul>
+            <li>Navigation claire et moderne.</li>
+            <li>Design responsif sur mobile et desktop.</li>
+            <li>Portail étudiant avec notes et messages.</li>
+            <li>Dashboard admin pour la gestion académique.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="apropos">
+      <div class="container">
+        <h3>À propos</h3>
+        <p class="lead">La Faculté des Sciences Informatiques de l'Institut de Technologie Appliquées des Cayes prépare les étudiants aux métiers du développement logiciel, des réseaux, de l'administration système et de la cybersécurité.</p>
+        <div class="stats">
+          <div class="stat"><strong>4</strong> Départements</div>
+          <div class="stat"><strong>100%</strong> Responsif</div>
+          <div class="stat"><strong>24/7</strong> Accès au contenu</div>
+          <div class="stat"><strong>1</strong> Communauté</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE SECTION -->
+    <section class="section section-alt" id="galerie">
+      <div class="container">
+        <h3>Galerie</h3>
+        <p class="lead">Découvrez le campus, les salles de classe, les équipements et la vie étudiante à travers ces photos.</p>
+        <div class="gallery-grid">
+          <!-- RANPLASE SA AVEK FOTO OU YO: assets/gallery1.jpg etc. -->
+          <div class="gallery-item">
+            <img src="assets/gallery1.jpg" alt="Campus ITAC" />
+            <div class="gallery-caption">Campus principal</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/gallery2.jpg" alt="Salle informatique" />
+            <div class="gallery-caption">Salle informatique</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/gallery3.jpg" alt="Étudiants en projet" />
+            <div class="gallery-caption">Étudiants en projet</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/gallery4.jpg" alt="Bibliothèque" />
+            <div class="gallery-caption">Sports</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="admissions">
+      <div class="container two-col">
+        <div>
+          <h3>Admissions</h3>
+          <p class="lead">Notre service des admissions accompagne les candidats avec un processus simple et professionnel, de la demande d'information à l'inscription finale.</p>
+          <ul class="list">
+            <li>Dossier de candidature complet.</li>
+            <li>Copie de diplôme ou relevé de notes.</li>
+            <li>Pièce d'identité valide.</li>
+            <li>Entretien ou test selon le programme choisi.</li>
+            <li>Confirmation d'inscription après validation du dossier.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Informations pratiques</h4>
+          <p><strong>Bureau :</strong> Lundi au vendredi, 8h00 - 15h00</p>
+          <p><strong>Samedi :</strong> Sur rendez-vous</p>
+          <p><strong>Email :</strong> itacinstitute.edu.ht</p>
+          <p><strong>Téléphone :</strong> +509 0000 0000</p>
+         <div>
+        <a href="https://wa.me/50900000000?text=Bonjour%2C%20je%20souhaiterais%20obtenir%20plus%20d'informations%20sur%20les%20formations" class="footer-cta" target="_blank" rel="noopener noreferrer">Contactez-nous sur Whatsapp</a>
+        </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="facultes">
+      <div class="container">
+        <h3>Facultés et départements</h3>
+        <div class="grid">
+          <div class="card">
+            <h4>Développement logiciel</h4>
+            <p>Programmation, génie logiciel, bases de données et développement web.</p>
+          </div>
+          <div class="card">
+            <h4>Réseaux et systèmes</h4>
+            <p>Infrastructure réseau, administration système et gestion des serveurs.</p>
+          </div>
+          <div class="card">
+            <h4>Cybersécurité</h4>
+            <p>Sécurité informatique, protection des données et audit des systèmes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="vie-etudiante">
+      <div class="container two-col">
+        <div class="card">
+          <h4>Vie étudiante</h4>
+          <p>Clubs, activités culturelles, ateliers techniques, conférences et projets collaboratifs permettent aux étudiants de grandir académiquement et humainement.</p>
+        </div>
+        <div class="card">
+          <h4>Services étudiants</h4>
+          <ul class="list">
+            <li>Orientation académique.</li>
+            <li>Accès à des ressources numériques.</li>
+            <li>Accompagnement des projets finaux.</li>
+            <li>Support et informations administratives.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="actualites">
+      <div class="container">
+        <h3>Actualités et événements</h3>
+        <div class="news-grid">
+          <article class="news-item">
+            <div class="content">
+              <span class="tag">Nouveau</span>
+              <h4>Ouverture des inscriptions</h4>
+              <p>Découvrez le calendrier d'admission et les documents requis pour la prochaine session.</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="content">
+              <span class="tag">Événement</span>
+              <h4>Conférence sur l'IA</h4>
+              <p>Une activité spéciale pour les étudiants intéressés par l'intelligence artificielle et l'innovation.</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="content">
+              <span class="tag">Campus</span>
+              <h4>Atelier de développement web</h4>
+              <p>Un atelier pratique pour renforcer les compétences techniques des étudiants.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt hidden-section" id="portal">
+      <div class="container portal-layout">
+        <div class="card portal-login">
+          <h3>Portail étudiant</h3>
+          <p class="lead">Bienvenue sur votre portail étudiant personnel.</p>
+          <div id="studentGreeting" style="display: none; margin-bottom: 20px;">
+            <p id="greetingText"></p>
+          </div>
+          <button class="submit-btn logout-btn" id="logoutBtn" type="button" style="display: none;">Déconnexion</button>
+        </div>
+
+        <div class="card portal-dashboard">
+          <div class="portal-header">
+            <h4>Tableau de bord étudiant</h4>
+            <span class="status-dot">En ligne</span>
+          </div>
+          <div class="portal-stats">
+            <div class="mini-stat">
+              <span>GPA</span>
+              <strong class="stat-number">3.72</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Crédits</span>
+              <strong class="stat-number">18</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Présence</span>
+              <strong class="stat-number">96%</strong>
+            </div>
+          </div>
+
+          <div class="portal-panels">
+            <div class="panel">
+              <h5>Mes notes récentes</h5>
+              <ul>
+                <li>Développement web avancé - 88/100</li>
+                <li>Base de données - 91/100</li>
+                <li>Réseaux informatiques - 84/100</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h5>Emploi du temps</h5>
+              <ul>
+                <li>Lundi : Génie logiciel</li>
+                <li>Mardi : Base de données</li>
+                <li>Mercredi : Réseaux</li>
+                <li>Jeudi : Projet tutoré</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h5>Messages</h5>
+              <ul>
+                <li>Nouvelle publication de notes.</li>
+                <li>Rappel : paiement des frais avant vendredi.</li>
+                <li>Réunion de classe à 14h00.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN SECTION (Hidden by default, visible only when Admin is logged in) -->
+    <section class="section section-alt hidden-section" id="admin">
+      <div class="container admin-container">
+        <!-- Admin Header Bar -->
+        <div class="admin-top-bar card">
+          <div class="admin-top-info">
+            <div class="admin-badge-status">
+              <span class="status-dot green-pulse"></span>
+              <span class="badge badge-success">Session Administrateur Active</span>
+            </div>
+            <h2 class="admin-title">Tableau de Bord Administrateur ITAC</h2>
+            <p id="adminGreetingText" class="admin-greeting">Bienvenue, Administrateur System</p>
+          </div>
+          <div class="admin-top-actions">
+            <button class="btn-logout" id="logoutAdminBtn" type="button">
+              <span>🔒 Déconnexion Admin</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Overview Metric Cards -->
+        <div class="admin-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon student-icon">🎓</div>
+            <div class="metric-data">
+              <span class="metric-label">Étudiants Inscrits</span>
+              <h3 class="metric-value" id="adminTotalStudents">1,248</h3>
+              <span class="metric-trend positive">+12% cette année</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon prof-icon">👨‍🏫</div>
+            <div class="metric-data">
+              <span class="metric-label">Corps Professoral</span>
+              <h3 class="metric-value">64</h3>
+              <span class="metric-trend neutral">Enseignants qualifiés</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon prog-icon">💻</div>
+            <div class="metric-data">
+              <span class="metric-label">Programmes Actifs</span>
+              <h3 class="metric-value">12</h3>
+              <span class="metric-trend positive">Faculté Informatique</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon req-icon">📬</div>
+            <div class="metric-data">
+              <span class="metric-label">Demandes en attente</span>
+              <h3 class="metric-value" id="adminPendingRequestsCount">5</h3>
+              <span class="metric-trend warning">Nécessite attention</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Navigation Tabs & Main Workspace -->
+        <div class="admin-workspace card">
+          <div class="admin-tab-nav">
+            <button class="admin-tab-btn active" data-admin-tab="students">
+              <span>👥 Gestion des Étudiants</span>
+            </button>
+            <button class="admin-tab-btn" data-admin-tab="announcements">
+              <span>📢 Annonces & Publications</span>
+            </button>
+            <button class="admin-tab-btn" data-admin-tab="grades">
+              <span>📝 Saisie des Notes</span>
+            </button>
+            <button class="admin-tab-btn" data-admin-tab="requests">
+              <span>📋 Demandes Académiques</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: GESTION DES ÉTUDIANTS -->
+          <div id="adminTab-students" class="admin-tab-panel active">
+            <div class="panel-header">
+              <div>
+                <h4>Liste des Étudiants Inscrits</h4>
+                <p class="panel-sub">Gérez les dossiers étudiants, ajoutez de nouveaux profils et consultez leurs statuts.</p>
+              </div>
+              <button class="btn-primary-action" id="openAddStudentBtn" type="button">
+                <span>➕ Ajouter un Étudiant</span>
+              </button>
+            </div>
+
+            <div class="table-toolbar">
+              <div class="search-box-inline">
+                <input type="text" id="adminStudentSearch" placeholder="Rechercher par nom ou matricule..." />
+              </div>
+              <div class="filter-select">
+                <select id="adminStudentFilter">
+                  <option value="all">Tous les statuts</option>
+                  <option value="active">Actifs</option>
+                  <option value="pending">En attente</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Matricule</th>
+                    <th>Nom Complet</th>
+                    <th>Programme</th>
+                    <th>Moyenne (GPA)</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminStudentsTableBody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 2: ANNONCES & PUBLICATIONS -->
+          <div id="adminTab-announcements" class="admin-tab-panel">
+            <div class="panel-header">
+              <div>
+                <h4>Publier une Nouvelle Annonce Campus</h4>
+                <p class="panel-sub">Diffusez des informations officielles visibles sur le site et le portail étudiant.</p>
+              </div>
+            </div>
+
+            <form id="adminPostAnnouncementForm" class="admin-form">
+              <div class="form-row">
+                <div class="field col-8">
+                  <label for="announcementTitle">Titre de l'Annonce</label>
+                  <input type="text" id="announcementTitle" placeholder="Ex: Ouverture des inscriptions aux cours d'été" required />
+                </div>
+                <div class="field col-4">
+                  <label for="announcementCategory">Catégorie</label>
+                  <select id="announcementCategory" required>
+                    <option value="Académique">Académique</option>
+                    <option value="Événement">Événement</option>
+                    <option value="Urgent">Urgent / Important</option>
+                    <option value="Examen">Examens & Notes</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="announcementContent">Contenu du Message</label>
+                <textarea id="announcementContent" rows="4" placeholder="Saisissez les détails de l'annonce..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn btn-success-action">
+                <span>🚀 Publier l'Annonce Instantanément</span>
+              </button>
+            </form>
+
+            <div class="recent-announcements-list">
+              <h5>Annonces Récentes Publiées</h5>
+              <div id="adminAnnouncementsContainer" class="announcements-stack">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: SAISIE DES NOTES -->
+          <div id="adminTab-grades" class="admin-tab-panel">
+            <div class="panel-header">
+              <div>
+                <h4>Saisie & Gestion des Notes</h4>
+                <p class="panel-sub">Attribuez ou mettez à jour les évaluations académiques des étudiants.</p>
+              </div>
+            </div>
+
+            <form id="adminGradeForm" class="admin-form">
+              <div class="form-row">
+                <div class="field col-6">
+                  <label for="gradeStudentSelect">Sélectionner l'Étudiant</label>
+                  <select id="gradeStudentSelect" required>
+                    <option value="">-- Choisir un étudiant --</option>
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+                <div class="field col-6">
+                  <label for="gradeCourseName">Matière / Cours</label>
+                  <select id="gradeCourseName" required>
+                    <option value="Développement web avancé">Développement Web Avancé</option>
+                    <option value="Base de données">Base de Données Relationnelles</option>
+                    <option value="Réseaux informatiques">Réseaux & Sécurité</option>
+                    <option value="Algorithmique">Algorithmique & Structures</option>
+                    <option value="Cybersécurité">Cybersécurité Pratique</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field col-6">
+                  <label for="gradeValue">Note (sur 100)</label>
+                  <input type="number" id="gradeValue" min="0" max="100" placeholder="Ex: 92" required />
+                </div>
+                <div class="field col-6">
+                  <label for="gradeAppreciation">Remarque / Appréciation</label>
+                  <input type="text" id="gradeAppreciation" placeholder="Ex: Excellent travail" />
+                </div>
+              </div>
+              <button type="submit" class="submit-btn btn-primary-action">
+                <span>💾 Enregistrer la Note</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- TAB 4: DEMANDES ACADÉMIQUES -->
+          <div id="adminTab-requests" class="admin-tab-panel">
+            <div class="panel-header">
+              <div>
+                <h4>Gestion des Demandes d'Étudiants</h4>
+                <p class="panel-sub">Validez ou traitez les requêtes d'attestations, relevés et pièces administratives.</p>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Étudiant</th>
+                    <th>Type de Demande</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRequestsTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL POUR AJOUTER UN ÉTUDIANT (ADMIN) -->
+    <div id="addStudentModal" class="login-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Nouveau Dossier Étudiant</h2>
+          <button class="modal-close" id="closeAddStudentModal" aria-label="Fermer">&times;</button>
+        </div>
+        <form id="addStudentForm" class="login-form">
+          <div class="field">
+            <label for="newStudentMatricule">Matricule</label>
+            <input type="text" id="newStudentMatricule" placeholder="Ex: ITA2026-003" required />
+          </div>
+          <div class="field">
+            <label for="newStudentName">Nom Complet</label>
+            <input type="text" id="newStudentName" placeholder="Ex: Sophonie Joseph" required />
+          </div>
+          <div class="field">
+            <label for="newStudentPassword">Mot de passe temporaire</label>
+            <input type="password" id="newStudentPassword" value="1234" required />
+          </div>
+          <div class="field">
+            <label for="newStudentProgram">Programme / Spécialité</label>
+            <select id="newStudentProgram" required>
+              <option value="Génie Logiciel">Génie Logiciel & Dev Web</option>
+              <option value="Réseaux & Sécurité">Réseaux & Administration Système</option>
+              <option value="Cybersécurité">Cybersécurité & Audit</option>
+              <option value="Intelligence Artificielle">Intelligence Artificielle</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn btn-primary-action">➕ Enregistrer l'Étudiant</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="section section-alt">
+      <div class="container two-col">
+        <div class="card testimonial">
+          <div><h4>Témoignage étudiant</h4></div>
+          <p>« J'ai trouvé ici un environnement sérieux, moderne et très utile pour progresser en informatique. »</p>
+                      <img src="image/Davileau.jpg" alt="Davileau" class="avatar">
+          <div class="stars">★★★★★</div>
+          <p><strong>- Étudiant en Licence</strong></p>
+
+
+          <p>« J'ai trouvé ici un environnement sérieux, moderne et très utile pour progresser en informatique. »</p>
+          <p><strong>- Étudiant en 1ère année</strong></p>
+                      <img src="image/Vio.jpg" alt="Vio" class="avatar">
+          <div class="stars">★★★★</div>
+        </div>
+        </div>
+
+
+        <div class="card">
+          <h4>Pourquoi choisir notre institut</h4>
+          <ul class="list">
+            <li>Image professionnelle et crédible.</li>
+            <li>Navigation simple et efficace.</li>
+            <li>Sections essentielles bien organisées.</li>
+            <li>Base prête pour croissance future.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-box">
+          <h3>Contact</h3>
+          <p><strong>Adresse :</strong> Cayes, Haïti</p>
+          <p><strong>Email :</strong> contact@ita-cayes.edu.ht</p>
+          <p><strong>Téléphone :</strong> +509 0000 0000</p>
+          <p>Vous pouvez ajouter ici votre carte Google Maps, les réseaux sociaux et les liens vers les portails étudiants.</p>
+        </div>
+        <div class="card">
+          <h4>Envoyer un message</h4>
+          <form id="contactForm">
+            <div class="field">
+              <label for="name">Nom complet</label>
+              <input id="name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" required />
+            </div>
+            <div class="field">
+              <label for="subject">Sujet</label>
+              <input id="subject" type="text" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button class="submit-btn" type="submit">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>ITAC</h4>
+          <p>Institut de Technologie Appliquées de Cayes</p>
+          <p class="footer-address">Cayes, Haïti</p>
+            <div class="footer-socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#programmes">Programmes</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4> Section Académique</h4>
+          <ul class="footer-links">
+            <li><a href="#portal">Portail étudiant</a></li>
+            <li><a href="#admin">Admin Dashboard</a></li>
+            <li><a href="#">Calendrier</a></li>
+            <li><a href="#">Ressources</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links footer-contact">
+            <li>
+              <strong>Email:</strong><br>
+              <a href="mailto:tacinstitut@gmail.edu">itacinstitut@gmail.edu</a>
+            </li>
+            <li>
+              <strong>Téléphone:</strong><br>
+              <a href="tel:+5090000000">+509 0000 0000</a>
+            </li>
+            <li>
+              <strong>Horaires:</strong><br>
+              Lun-Ven: 8h-15h
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2026 Institut de Technologie Appliquées de Cayes. Tous droits réservés. <br/> Devloppé par Bytemind society</p>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="javascript/script.js"></script>
+</body>
+</html>
