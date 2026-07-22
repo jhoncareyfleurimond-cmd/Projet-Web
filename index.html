@@ -39,7 +39,7 @@
       <div id="studentContent" class="tab-content active">
         <form id="studentLoginModal" class="login-form">
           <div class="field">
-            <label for="studentIdModal">Matricule</label>
+            <label for="studentIdModal">Code Etudiant</label>
             <input id="studentIdModal" name="studentId" type="text" placeholder="Ex: ITA2026-001 ou ITAC2026-001" required />
           </div>
           <div class="field">
@@ -48,7 +48,7 @@
           </div>
           <button type="submit" class="submit-btn">Se connecter</button>
         </form>
-        <p class="login-note">Compte de démonstration: <strong>ITA2026-001</strong> (mot de passe: <strong>1234</strong>)</p>
+        <p class="login-note">Compte de démonstration: <strong>ITA2026-001</strong> <br> (mot de passe: <strong>1234</strong>)</p>
       </div>
 
       <!-- ADMIN LOGIN -->
@@ -84,8 +84,9 @@
           <div class="nav-links">
             <a href="#home">Accueil</a>
             <a href="#apropos">À propos</a>
+            <a href="#facultes">Faculte & Departement</a>
+            <a href="#vie">Vie Etudiante</a>
             <a href="#admissions">Admissions</a>
-            <a href="#galerie">Galerie</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -106,9 +107,10 @@
     <div class="container mobile-panel" id="mobilePanel">
       <div class="nav-links nav-links-mobile">
         <a href="#home">Accueil</a>
-        <a href="#apropos">À propos</a>
+        <a href="about.html">À propos</a>
+        <a href="#facultes">Faculte & Departement</a>
+        <a href="#vie">Vie Etudiante</a>
         <a href="#admissions">Admissions</a>
-        <a href="#galerie">Galerie</a>
         <a href="#contact">Contact</a>
       </div>
       <button class="btn-login mobile" id="openLoginBtnMobile" type="button">Connexion</button>
@@ -123,11 +125,11 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Faculté des Sciences Informatiques</span>
-          <h2><marquee behavior="" direction="left">Former des experts du numérique avec une vision internationale.</marquee></h2>
+          <h2><marquee behavior="" direction="left">Les ecoles ont pour mission de former, ITAC de mieux former</marquee></h2>
           <p>L'Institut de Technologie Appliquées de Cayes propose une formation moderne, pratique et rigoureuse, pensée pour la réussite académique et l'employabilité.</p>
           <div class="hero-badges">
             <span class="badge">💻 Technologie & innovation</span>
-            <span class="badge">🌍 Normes internationales</span>
+            <span class="badge">🌍 Standard internationales</span>
           </div>
           <div class="cta">
             <a class="btn primary" href="#admissions">Inscrivez-vous maintenant</a>
@@ -136,13 +138,8 @@
         </div>
 
         <aside class="hero-card">
-          <h3>Points forts</h3>
-          <ul>
-            <li>Navigation claire et moderne.</li>
-            <li>Design responsif sur mobile et desktop.</li>
-            <li>Portail étudiant avec notes et messages.</li>
-            <li>Dashboard admin pour la gestion académique.</li>
-          </ul>
+          <h3>Institut de Technologie Aplliquees des Cayes</h3>
+          <img src="image/logo.png" alt="logo ITAC">
         </aside>
       </div>
     </section>
@@ -160,27 +157,26 @@
       </div>
     </section>
 
-    <!-- GALERIE SECTION -->
-    <section class="section section-alt" id="galerie">
+    <!-- Vie Etudiante SECTION -->
+    <section class="section section-alt" id="vie">
       <div class="container">
-        <h3>Galerie</h3>
-        <p class="lead">Découvrez le campus, les salles de classe, les équipements et la vie étudiante à travers ces photos.</p>
+        <h3>Vie Etudiante</h3>
+        <p class="lead">Clubs, activités culturelles, ateliers techniques, conférences et projets collaboratifs permettent aux étudiants de grandir académiquement et humainement.</p>
         <div class="gallery-grid">
-          <!-- RANPLASE SA AVEK FOTO OU YO: assets/gallery1.jpg etc. -->
           <div class="gallery-item">
-            <img src="assets/gallery1.jpg" alt="Campus ITAC" />
-            <div class="gallery-caption">Campus principal</div>
+            <img src="image/Promo.jpg" alt="diplome" />
+            <div class="gallery-caption">Graduation</div>
           </div>
           <div class="gallery-item">
-            <img src="assets/gallery2.jpg" alt="Salle informatique" />
+            <img src="image/salle.jpg" alt="Salle informatique" />
             <div class="gallery-caption">Salle informatique</div>
           </div>
           <div class="gallery-item">
-            <img src="assets/gallery3.jpg" alt="Étudiants en projet" />
+            <img src="image/staff.jpg" alt="Étudiants en projet" />
             <div class="gallery-caption">Étudiants en projet</div>
           </div>
           <div class="gallery-item">
-            <img src="assets/gallery4.jpg" alt="Bibliothèque" />
+            <img src="image/Sport1.jpg" alt="Sports" />
             <div class="gallery-caption">Sports</div>
           </div>
         </div>
@@ -237,8 +233,13 @@
     <section class="section section-alt" id="vie-etudiante">
       <div class="container two-col">
         <div class="card">
-          <h4>Vie étudiante</h4>
-          <p>Clubs, activités culturelles, ateliers techniques, conférences et projets collaboratifs permettent aux étudiants de grandir académiquement et humainement.</p>
+          <h4>Pourquoi choisir notre Institut</h4>
+          <ul class="list">
+            <li></li>
+            <li>Navigation simple et efficace.</li>
+            <li>Sections essentielles bien organisées.</li>
+            <li>Base prête pour croissance future.</li>
+          </ul>
         </div>
         <div class="card">
           <h4>Services étudiants</h4>
@@ -316,7 +317,7 @@
             <div class="panel">
               <h5>Mes notes récentes</h5>
               <ul>
-                <li>Développement web avancé - 88/100</li>
+                <li>Développement web - 88/100</li>
                 <li>Base de données - 91/100</li>
                 <li>Réseaux informatiques - 84/100</li>
               </ul>
@@ -354,7 +355,7 @@
               <span class="badge badge-success">Session Administrateur Active</span>
             </div>
             <h2 class="admin-title">Tableau de Bord Administrateur ITAC</h2>
-            <p id="adminGreetingText" class="admin-greeting">Bienvenue, Administrateur System</p>
+            <p id="adminGreetingText" class="admin-greeting">Bienvenue, de la panel d'Administrateur</p>
           </div>
           <div class="admin-top-actions">
             <button class="btn-logout" id="logoutAdminBtn" type="button">
@@ -606,49 +607,52 @@
               <option value="Intelligence Artificielle">Intelligence Artificielle</option>
             </select>
           </div>
-          <button type="submit" class="submit-btn btn-primary-action">➕ Enregistrer l'Étudiant</button>
+          <button type="submit" class="submit-btn btn-primary-action">➕ Enregistrer un Étudiant</button>
         </form>
       </div>
     </div>
 
     <section class="section section-alt">
       <div class="container two-col">
+       <h4>Témoignage étudiant</h4>
         <div class="card testimonial">
-          <div><h4>Témoignage étudiant</h4></div>
           <p>« J'ai trouvé ici un environnement sérieux, moderne et très utile pour progresser en informatique. »</p>
                       <img src="image/Davileau.jpg" alt="Davileau" class="avatar">
           <div class="stars">★★★★★</div>
-          <p><strong>- Étudiant en Licence</strong></p>
-
-
-          <p>« J'ai trouvé ici un environnement sérieux, moderne et très utile pour progresser en informatique. »</p>
-          <p><strong>- Étudiant en 1ère année</strong></p>
-                      <img src="image/Vio.jpg" alt="Vio" class="avatar">
-          <div class="stars">★★★★</div>
-        </div>
+          <p><strong>- Étudiant en 1ere annee Licence</strong></p>
         </div>
 
-
-        <div class="card">
-          <h4>Pourquoi choisir notre institut</h4>
-          <ul class="list">
-            <li>Image professionnelle et crédible.</li>
-            <li>Navigation simple et efficace.</li>
-            <li>Sections essentielles bien organisées.</li>
-            <li>Base prête pour croissance future.</li>
-          </ul>
+        <div class="card testimonial">
+          <p>« Institut de modele, c'est la reference en Informatique pour le grand-SUD. »</p>
+                      <img src="image/Davileau.jpg" alt="Davileau" class="avatar">
+          <div class="stars">★★★★★</div>
+          <p><strong>- Étudiant en 3eme annee Licence </strong></p>
         </div>
+
+        <div class="card testimonial">
+          <p>« Institut par excelence, mais il reste beaucoup de chose a ajouter.»</p>
+                      <img src="image/Davileau.jpg" alt="Davileau" class="avatar">
+          <div class="stars">★★★</div>
+          <p><strong>- Étudiant en 1ere annee Licence</strong></p>
+        </div>
+        
       </div>
     </section>
 
     <section class="section" id="contact">
       <div class="container contact-grid">
         <div class="contact-box">
+          <br>
+          <br>
           <h3>Contact</h3>
-          <p><strong>Adresse :</strong> Cayes, Haïti</p>
-          <p><strong>Email :</strong> contact@ita-cayes.edu.ht</p>
-          <p><strong>Téléphone :</strong> +509 0000 0000</p>
-          <p>Vous pouvez ajouter ici votre carte Google Maps, les réseaux sociaux et les liens vers les portails étudiants.</p>
+          <p><strong>Adresse :</strong> 20, Rue Toussaint Louverture, Cayes, Haïti</p>
+          <p><strong>Email :</strong> itacinstitut@gmail.edu</p>
+          <p><strong>Téléphone :</strong> (509) 5546-2260</p>
+          <br>
+          <p>Vous pouvez acceder ici a Google Maps, afin de pouvoir rejoindre notre itineraire</p>
+          <div>
+            <a href="https://share.google/A9l0HPN0l77byqLX9"><img src="image/GPS.jpg" alt="carte"></a>
+          </div>
         </div>
         <div class="card">
           <h4>Envoyer un message</h4>
@@ -680,22 +684,12 @@
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-section">
-          <h4>ITAC</h4>
-          <p>Institut de Technologie Appliquées de Cayes</p>
-          <p class="footer-address">Cayes, Haïti</p>
-            <div class="footer-socials">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-          </div>
-        </div>
-
-        <div class="footer-section">
           <h4>Navigation</h4>
           <ul class="footer-links">
             <li><a href="#home">Accueil</a></li>
             <li><a href="#apropos">À propos</a></li>
-            <li><a href="#programmes">Programmes</a></li>
+            <li><a href="#facultes">Faculte & Departement</a></li>
+            <li><a href="#vie">Vie Etudiante</a></li>
             <li><a href="#admissions">Admissions</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -715,18 +709,29 @@
           <h4>Contact</h4>
           <ul class="footer-links footer-contact">
             <li>
-              <strong>Email:</strong><br>
-              <a href="mailto:tacinstitut@gmail.edu">itacinstitut@gmail.edu</a>
+              <strong>Email:</strong>
+              <a href="mailto:itacinstitut@gmail.edu">itacinstitut@gmail.edu</a>
             </li>
             <li>
-              <strong>Téléphone:</strong><br>
-              <a href="tel:+5090000000">+509 0000 0000</a>
+              <strong>Téléphone:</strong>
+              <a href="tel:+50955462260">(509) 5546-2260</a>
             </li>
             <li>
-              <strong>Horaires:</strong><br>
+              <strong>Horaires:</strong>
               Lun-Ven: 8h-15h
             </li>
           </ul>
+        </div>
+
+        <div class="footer-section">
+                <h4>ITAC</h4>
+          <p>Institut de Technologie Appliquées de Cayes</p>
+          <p class="footer-address">Cayes, Haïti</p>
+            <div class="footer-socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
         </div>
       </div>
 
@@ -742,3 +747,6 @@
   <script src="javascript/script.js"></script>
 </body>
 </html>
+
+
+
